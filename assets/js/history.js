@@ -106,10 +106,10 @@ if (age <= 17) {
   );
 
   // Para no tener que repetir el código del apartado nombre y parte del de
-  // la edad podríamos crear una función o bien, en este caso, simplemente
-  // refrescar la ventana del navegador para volver a empezar de zero.
-  // Ello lo hacemos porqué no se cumplen los requisitos de edad.
+  // la edad podríamos crear una función, pero no se permiten funciones en esta
+  // ABP1.
   location.reload(true);
+  throw new Error("You are too young!");
 
 } else {
   // Información del/la jugador/ra.
@@ -240,6 +240,7 @@ if (score == 0) {
 
   // Empezamos el juego, de nuevo.
   location.reload(true);
+  throw new Error("You are too young!");
 
 } else {
   // Información del/la jugador/ra.
