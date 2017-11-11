@@ -509,5 +509,132 @@ if (score == 3) {
 /*------------------------------------------------------------------------------
 ## Nivel 3
 ------------------------------------------------------------------------------*/
-location.reload(true);
-throw new Error("You are too young!");
+// Información del/la jugador/ra.
+alert(
+  "lvl: " + lvl + "\n" +
+  "Score: " + score + "\n" +
+  "Player: " + name
+);
+
+// Seguimos!
+alert(
+  "lvl: " + lvl + "\n" +
+  "Score: " + score + "\n" +
+  "Player: " + name + "\n\n" +
+  "〜(〜^∇^）♬ ♪（^∇^〜)〜 Well, you are talking."
+);
+
+// Acción 2.2
+var action = prompt(
+  "ಠ◡ಠ What would you do?\n\n" +
+  "1 - You let the cute person talk more, without interrupting\n" +
+  "2 - You interrupt the conversation and you go to M06 class\n" +
+  "3 - You lose the notion of time...\n"
+);
+
+// Mientras la elección no sea un número, la preguntamos.
+// Mientras la elección no sea igual a 1 o 2 o 3, la preguntamos.
+var error = 0;
+while (isNaN(action) == true || (action != 1 && action != 2 && action != 3)) {
+  // Asignamos a "action" el valor introducido en el prompt.
+  action = prompt(
+    "ಠ◡ಠ What would you do?\n\n" +
+    "1 - You let the cute person talk more, without interrupting\n" +
+    "2 - You interrupt the conversation and you go to M06 class\n" +
+    "3 - You lose the notion of time...\n"
+  );
+
+  // A partir del segundo error le soltamos un piropo y le informamos sobre
+  // sus 3 únicas respuestas posibles.
+  if (error == 2) {
+    alert(
+      "(┛◉Д◉)┛彡┻━┻ Stupid!\n" +
+      "You only have to answer 1 or 2 or 3!"
+    );
+
+    // Reseteamos el error y le volvemos a dar 2 oportunidades.
+    error = 0;
+  }
+
+  ++error;
+}
+
+// Transformar resultados (case 0, 1 y default).
+if (action == 1) {
+  action = 0;
+
+} else if (action == 2) {
+  action = 1;
+
+} else {
+  action = 2;
+}
+
+// Reacción
+switch (action) {
+  case 0:
+    // Dejas que la persona linda hable más, sin interrumpir.
+     score *= 2; // score6 = 12 | score9 = 18
+
+    alert(
+      "(ಠ_ರ) The beautiful person is very happy, but you skip the studies...\n\n" +
+      "＼(￣ー＼)(／ー￣)／ You have started a friendship!"
+    );
+
+    break;
+  case 1:
+    // Interrumpes la conversación y te vas a clase de M06.
+    score *= 10; // score6 = 60 | score9 = 90
+
+    alert(
+      "(￣□￣) The beautiful person is very happy, but the classes are the classes\n\n" +
+      "＼(￣ー＼)(／ー￣)／ You have started a friendship!"
+    );
+
+    break;
+  default:
+    // Pierdes la noción del tiempo.
+    score += 1; // score6 = 7 | score9 = 10
+
+    alert(
+      "( ･_･)♡ Earth calling " + name + "\n" +
+      "( ･_･)♡ Earth calling " + name + "\n" +
+      "( ･_･)♡ Earth calling " + name + "...\n\n" +
+      "ლ(╹◡╹ლ) ♪ Patience young padawan, you are initiating a friendship!"
+    );
+}
+
+// Comprobamos "puntuación" para determinar el final.
+if (score <= 10) { // Opción 3
+  alert(
+    "( ･_･)♡ Earth calling " + name + "\n" +
+    "( ･_･)♡ Earth calling " + name + "\n" +
+    "( ･_･)♡ Earth calling " + name + "...\n\n" +
+    "ლ(╹◡╹ლ) ♪ Patience young padawan, you are initiating a friendship!\n\n" +
+    "GAME OVER\n" +
+    "lvl: " + lvl + "\n" +
+    "Score: " + score + "\n\n" +
+    "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Congratulations.\n" +
+    "Level 3 is only for the winners!"
+  );
+
+} else if (score <= 18) { // Opción 3
+  alert(
+    "≧◡≦ Well played " + name + "\n\n" +
+    "GAME OVER\n" +
+    "lvl: " + lvl + "\n" +
+    "Score: " + score + "\n\n" +
+    "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Congratulations.\n" +
+    "Level 3 is only for the winners!"
+  );
+
+} else {
+  alert(
+    "\\m/(>.<)\\m/ Love Master " + name + "\n\n" +
+    "GAME OVER\n" +
+    "lvl: " + lvl + "\n" +
+    "Score: " + score + "\n\n" +
+    "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Congratulations.\n" +
+    "Level 3 is only for the winners!"
+  );
+}
