@@ -8,6 +8,8 @@
  * # Niveles (3)
  * ## Nivel 1
  * ## Nivel 2
+ * ### Opción 1: "Le guiñas el ojo"
+ * ### Opción 2: "Le pides la hora"
  * ## Nivel 3
  ******************************************************************************/
 
@@ -87,13 +89,13 @@ alert("Ok. Your name is " + name);
 // ## Edad
 // ------------------------------------------------------------------------------*/
 // Preguntar la edad.
-var age = prompt("What is your age?", 17);
+var age = prompt("What is your age?", 18);
 
 // Mientras la edad no sea un número, la preguntamos.
 // Mientras la edad no sea superior a 0, la preguntamos.
 while (isNaN(age) == true || age < 1) {
-  // Asignamos a "edad" el valor introducido en el prompt.
-  age = prompt("What is your age?", 17);
+  // Asignamos a "age" el valor introducido en el prompt.
+  age = prompt("What is your age?", 18);
 }
 
 // Validar si el/la usuario/ria es mayor de edad (18).
@@ -167,7 +169,7 @@ var action = prompt(
 // Mientras la elección no sea igual a 1 o 2 o 3, la preguntamos.
 var error = 0;
 while (isNaN(action) == true || (action != 1 && action != 2 && action != 3)) {
-  // Asignamos a "edad" el valor introducido en el prompt.
+  // Asignamos a "action" el valor introducido en el prompt.
   action = prompt(
     "ಠ◡ಠ What would you do?\n\n" +
     "1 - You wink the eye\n" +
@@ -187,7 +189,7 @@ while (isNaN(action) == true || (action != 1 && action != 2 && action != 3)) {
     error = 0;
   }
 
-  error++;
+  ++error;
 }
 
 // Transformar resultados (case 0, 1 y default).
@@ -205,7 +207,7 @@ if (action == 1) {
 switch (action) {
   case 0:
     // Le guiñas el ojo.
-    score++;
+    score++; // score = 2
 
     alert(
       "(◡﹏◕) Ridiculous!\n" +
@@ -215,7 +217,7 @@ switch (action) {
     break;
   case 1:
     // Le pides la hora.
-    score *= 2;
+    score *= 3; // score = 3
 
     alert(
       "ಠ◡ಠ Ohh yes!\n" +
@@ -225,7 +227,7 @@ switch (action) {
     break;
   default:
     // Te escondes...
-    score--;
+    score--; // score = 0
 
     alert(
       "ಥ_ಥ Really!\n" +
@@ -240,7 +242,7 @@ if (score == 0) {
 
   // Empezamos el juego, de nuevo.
   location.reload(true);
-  throw new Error("You are too young!");
+  throw new Error("Game Over");
 
 } else {
   // Información del/la jugador/ra.
@@ -259,8 +261,253 @@ if (score == 0) {
 /*------------------------------------------------------------------------------
 ## Nivel 2
 ------------------------------------------------------------------------------*/
+// Información del/la jugador/ra.
+alert(
+  "lvl: " + lvl + "\n" +
+  "Score: " + score + "\n" +
+  "Player: " + name
+);
 
+/*------------------------------------------------------------------------------
+### Opción 1: "Le guiñas el ojo"
+------------------------------------------------------------------------------*/
+// Si le hemos "guiñado el ojo" el score será igual a 2.
+// Entonces realizaremos una acción que se corresponda a esta elección.
+if (score == 2) {
+  // Seguimos!
+  alert(
+    "lvl: " + lvl + "\n" +
+    "Score: " + score + "\n" +
+    "Player: " + name + "\n\n" +
+    "໖_໖ You look at that cute person with those little lamb eyes.\n" +
+    "õ.O The cute person does not understand your action..."
+  );
+
+  // Acción 2.1
+  var action = prompt(
+    "ಠ◡ಠ What would you do?\n\n" +
+    "1 - You apologize and you introduce yourself\n" +
+    "2 - Nothing\n" +
+    "3 - You ask for the time\n"
+  );
+
+  // Mientras la elección no sea un número, la preguntamos.
+  // Mientras la elección no sea igual a 1 o 2 o 3, la preguntamos.
+  var error = 0;
+  while (isNaN(action) == true || (action != 1 && action != 2 && action != 3)) {
+    // Asignamos a "action" el valor introducido en el prompt.
+    action = prompt(
+      "ಠ◡ಠ What would you do?\n\n" +
+      "1 - You apologize and you introduce yourself\n" +
+      "2 - Nothing\n" +
+      "3 - You ask for the time\n"
+    );
+
+    // A partir del segundo error le soltamos un piropo y le informamos sobre
+    // sus 3 únicas respuestas posibles.
+    if (error == 2) {
+      alert(
+        "(┛◉Д◉)┛彡┻━┻ Stupid!\n" +
+        "You only have to answer 1 or 2 or 3!"
+      );
+
+      // Reseteamos el error y le volvemos a dar 2 oportunidades.
+      error = 0;
+    }
+
+    ++error;
+  }
+
+  // Transformar resultados (case 0, 1 y default).
+  if (action == 1) {
+    action = 0;
+
+  } else if (action == 2) {
+    action = 1;
+
+  } else {
+    action = 2;
+  }
+
+  // Reacción
+  switch (action) {
+    case 0:
+      // Te disculpas y te presentas.
+       score *= 3; // score = 6
+
+      alert(
+        "☜-(ΘLΘ)-☞ Gentleman!\n" +
+        "The cute person gives you his phone number."
+      );
+
+      // Pasamos al nivel 3
+      lvl++;
+
+      break;
+    case 1:
+      // Nada.
+      score = score - 2;
+
+      alert(
+        "(￣。￣)～ ehhh... (╥﹏╥)\n" +
+        "You had gone far, but..." +
+        "You will be more alone than the number 1!"
+      );
+
+      break;
+    default:
+      // Le pides la hora.
+      // Accederemos a la opción 2 del segundo nivel.
+      score++; // score = 3
+
+      alert(
+        "ಠ◡ಠ Ohh yes!\n" +
+        "The nice person has stopped in front of you."
+      );
+  }
+
+  // Comprobamos "puntuación" para determinar si puede seguir jugando.
+  if (score == 0) {
+    alert("No comments...");
+    alert("☉▵☉凸 Loser!");
+
+    // Empezamos el juego, de nuevo.
+    location.reload(true);
+    throw new Error("You are too young!");
+
+  } else {
+    // Información del/la jugador/ra.
+    alert(
+      "lvl: " + lvl + "\n" +
+      "Score: " + score + "\n" +
+      "Player: " + name + "\n\n" +
+      "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Congratulations."
+    );
+  }
+}
+
+/*------------------------------------------------------------------------------
+### Opción 2: "Le pides la hora"
+------------------------------------------------------------------------------*/
+// Si le pedimos la hora, el score será igual a 3. Con ello nos introducimos a
+// la segunda opción, que se hace posible después de elegir la hora en el primer
+// nivel.
+// Si en la Opción 1 del segundo nivel se pide la hora, también se accede a la
+// siguiente 2da opción.
+if (score == 3) {
+  // Seguimos!
+  alert(
+    "lvl: " + lvl + "\n" +
+    "Score: " + score + "\n" +
+    "Player: " + name + "\n\n" +
+    "ヾ(〃^∇^)ﾉ Politely you ask for the time again."
+  );
+
+  // Acción 2.2
+  var action = prompt(
+    "ಠ◡ಠ What would you do?\n\n" +
+    "1 - Take advantage of the situation and ask for the phone number\n" +
+    "2 - Nothing\n" +
+    "3 - You ask his name\n"
+  );
+
+  // Mientras la elección no sea un número, la preguntamos.
+  // Mientras la elección no sea igual a 1 o 2 o 3, la preguntamos.
+  var error = 0;
+  while (isNaN(action) == true || (action != 1 && action != 2 && action != 3)) {
+    // Asignamos a "action" el valor introducido en el prompt.
+    action = prompt(
+      "ಠ◡ಠ What would you do?\n\n" +
+      "1 - Take advantage of the situation and ask for the phone number\n" +
+      "2 - Nothing\n" +
+      "3 - You ask his name\n"
+    );
+
+    // A partir del segundo error le soltamos un piropo y le informamos sobre
+    // sus 3 únicas respuestas posibles.
+    if (error == 2) {
+      alert(
+        "(┛◉Д◉)┛彡┻━┻ Stupid!\n" +
+        "You only have to answer 1 or 2 or 3!"
+      );
+
+      // Reseteamos el error y le volvemos a dar 2 oportunidades.
+      error = 0;
+    }
+
+    ++error;
+  }
+
+  // Transformar resultados (case 0, 1 y default).
+  if (action == 1) {
+    action = 0;
+
+  } else if (action == 2) {
+    action = 1;
+
+  } else {
+    action = 2;
+  }
+
+  // Reacción
+  switch (action) {
+    case 0:
+      // Tomas ventaja de la situación y le pides el número.
+       score += 3; // score = 6
+
+      alert(
+        "\\m/(>.<)\\m/ You are the best!\n" +
+        "The cute person gives you his phone number." +
+        "ヾ( ~▽~)ﾂ ♪ You started a conversation!"
+      );
+
+      break;
+    case 1:
+      // Nada.
+      score = score - 3;
+
+      alert(
+        "(￣。￣)～ ehhh... (╥﹏╥)\n" +
+        "You had gone far, but..." +
+        "You will be more alone than the number 1!"
+      );
+
+      break;
+    default:
+      // Le preguntas el nombre.
+      score *= 3; // score = 9
+
+      alert(
+        "ಠ◡ಠ Ohh yes!\n" +
+        "ヾ( ~▽~)ﾂ ♪ You started a conversation!"
+      );
+  }
+
+  // Comprobamos "puntuación" para determinar si puede seguir jugando.
+  if (score == 0) {
+    alert("No comments...");
+    alert("☉▵☉凸 Loser!");
+
+    // Empezamos el juego, de nuevo.
+    location.reload(true);
+    throw new Error("You are too young!");
+
+  } else {
+    // Información del/la jugador/ra.
+    alert(
+      "lvl: " + lvl + "\n" +
+      "Score: " + score + "\n" +
+      "Player: " + name + "\n\n" +
+      "(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ Congratulations."
+    );
+
+    // Pasamos al nivel 3
+    lvl++;
+  }
+}
 
 /*------------------------------------------------------------------------------
 ## Nivel 3
 ------------------------------------------------------------------------------*/
+location.reload(true);
+throw new Error("You are too young!");
